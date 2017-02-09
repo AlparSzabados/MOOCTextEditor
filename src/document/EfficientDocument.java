@@ -51,8 +51,8 @@ public class EfficientDocument extends Document {
 		// MAKE SURE YOU UNDERSTAND THIS LINE BEFORE YOU CODE THE REST
 		// OF THIS METHOD.
 		List<String> tokens = getTokens("[!?.]+|[a-zA-Z]+");
-		
-		// TODO: Finish this method.  Remember the countSyllables method from 
+
+		// TODO: Finish this method.  Remember the countSyllables method from
 		// Document.  That will come in handy here.  isWord defined above will also help.
 	}
 
@@ -118,29 +118,4 @@ public class EfficientDocument extends Document {
         //TODO: write this method.  Hint: It's simple
         return 0;
 	}
-	
-	// Can be used for testing
-	// We encourage you to add your own tests here.
-	public static void main(String[] args)
-	{
-	    testCase(new EfficientDocument("This is a test.  How many???  "
-                + "Senteeeeeeeeeences are here... there should be 5!  Right?"),
-                16, 13, 5);
-        testCase(new EfficientDocument(""), 0, 0, 0);
-        testCase(new EfficientDocument("sentence, with, lots, of, commas.!  "
-                + "(And some poaren)).  The output is: 7.5."), 15, 11, 4);
-        testCase(new EfficientDocument("many???  Senteeeeeeeeeences are"), 6, 3, 2); 
-        testCase(new EfficientDocument("Here is a series of test sentences. Your program should "
-				+ "find 3 sentences, 33 words, and 49 syllables. Not every word will have "
-				+ "the correct amount of syllables (example, for example), "
-				+ "but most of them will."), 49, 33, 3);
-		testCase(new EfficientDocument("Segue"), 2, 1, 1);
-		testCase(new EfficientDocument("Sentence"), 2, 1, 1);
-		testCase(new EfficientDocument("Sentences?!"), 3, 1, 1);
-		testCase(new EfficientDocument("Lorem ipsum dolor sit amet, qui ex choro quodsi moderatius, nam dolores explicari forensibus ad."),
-		         32, 15, 1);
-		
-	}
-	
-
 }
