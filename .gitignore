@@ -5,3 +5,5 @@ MOOCTextEditor.iml
 .metadata/
 bin/
 grader_output/
+
+/.idea/vcs.xml
