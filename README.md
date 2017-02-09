@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/AlparSzabados/MOOCTextEditor.svg?branch=master)](https://travis-ci.org/AlparSzabados/MOOCTextEditor)
+
 /-------------------------------------------------------------------------
 / Starter Code and GUI Application for Course 2 in the
 / Java Programming: Object Oriented Design of 
