@@ -1,15 +1,13 @@
 /**
  * 
  */
-package textgen;
-
-import static com.sun.xml.internal.ws.dump.LoggingDumpTube.Position.Before;
-import static org.junit.Assert.*;
-
-import java.util.LinkedList;
 
 import org.junit.Before;
 import org.junit.Test;
+import textgen.MyLinkedList;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 /**
  * @author UC San Diego MOOC team
@@ -19,7 +17,7 @@ public class MyLinkedListTester {
 
 	private static final int LONG_LIST_LENGTH =10; 
 
-	MyLinkedList<String> shortList;
+	MyLinkedList<String>  shortList;
 	MyLinkedList<Integer> emptyList;
 	MyLinkedList<Integer> longerList;
 	MyLinkedList<Integer> list1;
