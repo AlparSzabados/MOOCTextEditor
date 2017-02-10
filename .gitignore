@@ -1,9 +1,11 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea/workspace.xml
-MOOCTextEditor.iml
-.gitignore
+.idea/vcs.xml
+.idea/uiDesigner.xml
+.idea/gradle.xml
+.idea/libraries
+.idea/
 .metadata/
 bin/
+build/
 grader_output/
-
-/.idea/vcs.xml
