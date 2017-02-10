@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MOOCTextEditor.iml" filepath="$PROJECT_DIR$/MOOCTextEditor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MOOCTextEditor.iml" filepath="$PROJECT_DIR$/.idea/modules/MOOCTextEditor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MOOCTextEditor_main.iml" filepath="$PROJECT_DIR$/.idea/modules/MOOCTextEditor_main.iml" group="MOOCTextEditor" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MOOCTextEditor_test.iml" filepath="$PROJECT_DIR$/.idea/modules/MOOCTextEditor_test.iml" group="MOOCTextEditor" />
     </modules>
   </component>
 </project>

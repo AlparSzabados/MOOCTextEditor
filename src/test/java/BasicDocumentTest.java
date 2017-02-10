@@ -1,5 +1,4 @@
-package document;
-
+import document.BasicDocument;
 import org.junit.jupiter.api.Test;
 
 class BasicDocumentTest {
@@ -63,7 +62,7 @@ class BasicDocumentTest {
      * @param words     The expected number of words
      * @param sentences The expected number of sentences
      */
-    public static void testCase(Document doc, int syllables, int words, int sentences) {
+    public static void testCase(BasicDocument doc, int syllables, int words, int sentences) {
         assert doc.getNumSyllables() == syllables;
         assert doc.getNumWords() == words;
         assert doc.getNumSentences() == sentences;
