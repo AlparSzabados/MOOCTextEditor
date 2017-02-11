@@ -2,12 +2,12 @@ group 'alpár.szabados'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'javafx-gradle-plugin'
 
 sourceCompatibility = 1.8
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
-
+    testCompile group: 'junit', name: 'junit', version: '4.12'
     compile group: 'org.fxmisc.richtext', name: 'richtextfx', version: '0.6.10'
 }
 
@@ -21,15 +21,10 @@ buildscript {
 }
 
 repositories {
-    mavenLocal()
     mavenCentral()
 }
 
-apply plugin: 'javafx-gradle-plugin'
-
-
 jfx {
-    mainClass = 'MainApp'
-
+    mainClass = 'application.MainApp'
     vendor = 'alpár.szabados'
 }
