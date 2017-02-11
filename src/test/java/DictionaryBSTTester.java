@@ -1,15 +1,9 @@
-/**
- * 
- */
-
-import static org.junit.Assert.*;
-
-import java.util.LinkedList;
-
 import org.junit.Before;
 import org.junit.Test;
 import spelling.DictionaryBST;
 import spelling.DictionaryLoader;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author UC San Diego MOOC team
@@ -123,8 +117,5 @@ public class DictionaryBSTTester {
 		assertEquals("Testing isWord on large: subsequent", true, largeDict.isWord("subsequent"));
 		
 		
-	}	
-	
-	
-	
+	}
 }
