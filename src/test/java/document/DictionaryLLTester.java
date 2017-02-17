@@ -1,6 +1,4 @@
-/**
- * 
- */
+package document;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -119,8 +117,5 @@ public class DictionaryLLTester {
 		
 		assertEquals("Testing isWord on small: subsequent", true, smallDict.isWord("subsequent"));
 		assertEquals("Testing isWord on large: subsequent", true, largeDict.isWord("subsequent"));
-		
-		
-	}	
-	
+	}
 }

@@ -1,3 +1,5 @@
+package document;
+
 import org.junit.Before;
 import org.junit.Test;
 import spelling.DictionaryBST;

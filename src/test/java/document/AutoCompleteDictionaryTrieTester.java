@@ -1,16 +1,14 @@
-/**
- * 
- */
-
-import static org.junit.Assert.*;
-
-import java.util.LinkedList;
-import java.util.List;
+package document;
 
 import org.junit.Before;
 import org.junit.Test;
 import spelling.AutoCompleteDictionaryTrie;
 import spelling.DictionaryLoader;
+
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author UC San Diego MOOC team
@@ -147,8 +145,7 @@ public class AutoCompleteDictionaryTrieTester {
 		assertTrue(twoOfThree);
 		
 		completions = smallDict.predictCompletions("he", 2);
-		boolean allIn = completions.contains("he") && 
-				(completions.contains("hem") || completions.contains("hey"));
+		boolean allIn = completions.contains("he") && (completions.contains("hem") || completions.contains("hey"));
 		assertEquals(2, completions.size());
 		assertTrue(allIn);
 		
@@ -160,8 +157,4 @@ public class AutoCompleteDictionaryTrieTester {
 		completions = smallDict.predictCompletions("x", 5);
 		assertEquals(0, completions.size());
 	}
-	
-	
-	
-	
 }
