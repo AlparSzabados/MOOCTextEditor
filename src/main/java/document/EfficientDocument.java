@@ -11,17 +11,15 @@ import java.util.List;
  */
 public class EfficientDocument extends Document {
 
-	private int numWords;  // The number of words in the document
-	private int numSentences;  // The number of sentences in the document
-	private int numSyllables;  // The number of syllables in the document
-	
-	public EfficientDocument(String text)
-	{
+	private int numWords;
+	private int numSentences;
+	private int numSyllables;
+
+	public EfficientDocument(String text) {
 		super(text);
 		processText();
 	}
-	
-	
+
 	/** 
 	 * Take a string that either contains only alphabetic characters,
 	 * or only sentence-ending punctuation.  Return true if the string
@@ -31,91 +29,43 @@ public class EfficientDocument extends Document {
 	 * @param tok The string to check
 	 * @return true if tok is a word, false if it is punctuation. 
 	 */
-	private boolean isWord(String tok)
-	{
-	    // Note: This is a fast way of checking whether a string is a word
-	    // You probably don't want to change it.
-		return !(tok.indexOf("!") >=0 || tok.indexOf(".") >=0 || tok.indexOf("?")>=0);
+	private boolean isWord(String tok) {
+		return !(tok.contains("!") || tok.contains(".") || tok.contains("?"));
 	}
-	
-	
+
     /** Passes through the text one time to count the number of words, syllables 
      * and sentences, and set the member variables appropriately.
      * Words, sentences and syllables are defined as described below. 
      */
-	private void processText()
-	{
-		// Call getTokens on the text to preserve separate strings that are 
-		// either words or sentence-ending punctuation.  Ignore everything
-		// That is not a word or a sentence-ending puctuation.
-		// MAKE SURE YOU UNDERSTAND THIS LINE BEFORE YOU CODE THE REST
-		// OF THIS METHOD.
+	private void processText() {
 		List<String> tokens = getTokens("[!?.]+|[a-zA-Z]+");
 
-		// TODO: Finish this method.  Remember the countSyllables method from
-		// Document.  That will come in handy here.  isWord defined above will also help.
+		for (int i = 0; i < tokens.size(); i++) {
+			String s = tokens.get(i);
+			if (isWord(s)) {
+				if (i + 1 == tokens.size()) {
+					numSentences++;
+				}
+				numSyllables += countSyllables(s);
+				numWords++;
+			} else {
+				numSentences++;
+			}
+		}
 	}
 
-	
-	/**
-	 * Get the number of sentences in the document.
-	 * Sentences are defined as contiguous strings of characters ending in an 
-	 * end of sentence punctuation (. ! or ?) or the last contiguous set of 
-	 * characters in the document, even if they don't end with a punctuation mark.
-	 * 
-	 * Check the examples in the main method below for more information. 
-	 *  
-	 * This method does NOT process the whole text each time it is called.  
-	 * It returns information already stored in the EfficientDocument object.
-	 * 
-	 * @return The number of sentences in the document.
-	 */
 	@Override
 	public int getNumSentences() {
-		//TODO: write this method.  Hint: It's simple
-		return 0;
+		return numSentences;
 	}
 
-	
-	/**
-	 * Get the number of words in the document.
-	 * A "word" is defined as a contiguous string of alphabetic characters
-	 * i.e. any upper or lower case characters a-z or A-Z.  This method completely 
-	 * ignores numbers when you count words, and assumes that the document does not have 
-	 * any strings that combine numbers and letters. 
-	 * 
-	 * Check the examples in the main method below for more information.
-	 * 
-	 * This method does NOT process the whole text each time it is called.  
-	 * It returns information already stored in the EfficientDocument object.
-	 * 
-	 * @return The number of words in the document.
-	 */
 	@Override
 	public int getNumWords() {
-		//TODO: write this method.  Hint: It's simple
-	    return 0;
+		return numWords;
 	}
 
-
-	/**
-	 * Get the total number of syllables in the document (the stored text). 
-	 * To calculate the the number of syllables in a word, it uses the following rules:
-	 *       Each contiguous sequence of one or more vowels is a syllable, 
-	 *       with the following exception: a lone "e" at the end of a word 
-	 *       is not considered a syllable unless the word has no other syllables. 
-	 *       You should consider y a vowel.
-	 *       
-	 * Check the examples in the main method below for more information.
-	 * 
-	 * This method does NOT process the whole text each time it is called.  
-	 * It returns information already stored in the EfficientDocument object.
-	 * 
-	 * @return The number of syllables in the document.
-	 */
 	@Override
 	public int getNumSyllables() {
-        //TODO: write this method.  Hint: It's simple
-        return 0;
+		return numSyllables;
 	}
 }
