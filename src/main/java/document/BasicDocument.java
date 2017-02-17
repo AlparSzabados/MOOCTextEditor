@@ -50,7 +50,7 @@ public class BasicDocument extends Document
 	 */
 	@Override
 	public int getNumSentences() {
-		return this.getTokens("[.!?\n]+|[A-za-z]$").size();
+		return this.getTokens("[^.!?]+").size();
 	}
 	
 	/**
