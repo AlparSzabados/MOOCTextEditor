@@ -42,19 +42,7 @@ public abstract class Document {
         return tokens;
     }
 
-    /**
-     * This is a helper function that returns the number of syllables
-     * in a word.  You should write this and use it in your
-     * BasicDocument class.
-     * <p>
-     * You will probably NOT need to add a countWords or a countSentences
-     * method here.  The reason we put countSyllables here because we'll
-     * use it again next week when we implement the EfficientDocument class.
-     * <p>
-     * For reasons of efficiency you should not create Matcher or Pattern
-     * objects inside this method. Just use a loop to loop through the
-     * characters in the string and write your own logic for counting
-     * syllables.
+    /** Helper method for getNumSyllables.
      *
      * @param word The word to count the syllables in
      * @return The number of syllables in the given word, according to
@@ -110,8 +98,9 @@ public abstract class Document {
      * return the Flesch readability score of this document
      */
     public double getFleschScore() {
-        return text.length();
-        // TODO: You will play with this method in week 1, and
-        // then implement it in week 2
+        final double wordsDivSentences = (double) getNumWords() / (double) getNumSentences();
+        final double syllablesDivWords = (double) getNumSyllables() / (double) getNumWords();
+
+        return 206.835 - 1.015 * wordsDivSentences - 84.6 * syllablesDivWords;
     }
 }
