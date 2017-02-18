@@ -34,21 +34,20 @@ public class MyLinkedListTest {
 
     @Test
     public void shouldAddElement() {
-        final MyLinkedList<Integer> list = new MyLinkedList<>();
+        final List<Integer> list = new MyLinkedList<>();
         list.add(1);
         list.add(2);
-        assert list.get(0) == 1;
-        assert list.get(1) == 2;
+        assertEquals(1, (int) list.get(0));
+        assertEquals(2, (int) list.get(1));
     }
 
     @Test
     public void shouldAddElementOnIndex() {
-        final MyLinkedList<Integer> list = new MyLinkedList<>();
+        final List<Integer> list = new MyLinkedList<>();
         list.add(1);
         list.add(0, 2);
-        assertEquals(2, list.size());
-        assert list.get(0) == 2;
-        assert list.get(1) == 1;
+        assertEquals(2, (int) list.get(0));
+        assertEquals(1, (int) list.get(1));
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
@@ -58,22 +57,26 @@ public class MyLinkedListTest {
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void shouldThrowWhenInvalidIndexGet() {
-        new MyLinkedList<Integer>().get(0);
+        new MyLinkedList<Integer>().get(-1);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void shouldThrowWhenGetIndexEqualsSize() {
-        final MyLinkedList<Integer> list = new MyLinkedList<>();
+        final List<Integer> list = new MyLinkedList<>();
         list.add(1);
-        list.add(2);
-        list.get(2);
+        list.get(1);
     }
 
     // -- size
 
     @Test
-    public void shouldReturnSize() {
-        final MyLinkedList<Integer> list = new MyLinkedList<>();
+    public void shouldReturnSizeIfNull() {
+        assertEquals(0, new MyLinkedList<Integer>().size());
+    }
+
+    @Test
+    public void shouldReturnSizeIfNonNull() {
+        final List<Integer> list = new MyLinkedList<>();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -87,45 +90,42 @@ public class MyLinkedListTest {
 
     @Test
     public void shouldSet() {
-        final MyLinkedList<Integer> list = new MyLinkedList<>();
+        final List<Integer> list = new MyLinkedList<>();
         list.add(1);
         list.add(2);
-        list.set(1, null);
-        assertEquals(null, list.get(1));
+        list.set(1, 2);
+        assertEquals(2, (int) list.get(1));
     }
 
     // -- remove
 
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void shouldThrowOnInvalidIndex() {
+        new MyLinkedList<Integer>().remove(0);
+    }
+
     @Test
-    public void shouldRemoveNode() {
-        final MyLinkedList<Integer> list = new MyLinkedList<>();
+    public void shouldReturnRemovedValue() {
+        final List<Integer> list = new MyLinkedList<>();
         list.add(1);
         list.add(2);
         list.add(3);
         list.add(4);
         list.add(5);
-        list.remove(2);
+        final int remove = list.remove(2);
+        assertEquals(3, remove);
         assertEquals(4, list.size());
     }
 
     @Test
-    public void shouldReturnRemovedNodeData() {
-        final MyLinkedList<Integer> list = new MyLinkedList<>();
-        list.add(1);
-        list.add(2);
-        final Integer remove = list.remove(1);
-        assert remove == 2;
-    }
-
-    @Test
-    public void shouldReturnRemovedNodeData1() {
-        final MyLinkedList<Integer> actual = new MyLinkedList<>();
+    public void shouldRemoveNode() {
+        final List<Integer> actual = new MyLinkedList<>();
         actual.add(1);
         actual.add(2);
         actual.add(3);
         actual.add(4);
         actual.remove(3);
-        final LinkedList<Integer> expected = new LinkedList<>(Arrays.asList(1, 2, 3));
+        final List<Integer> expected = new LinkedList<>(Arrays.asList(1, 2, 3));
         assertEquals(expected, actual);
     }
 }
