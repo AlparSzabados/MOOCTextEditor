@@ -33,14 +33,13 @@ public class DictionaryGrader {
 
             feedback += "** Test #4: Adding a new word to the BST dictionary...";
             feedback += "addWord returned " + dictBST.addWord("tEst") + ".\n";
-            
+
             feedback += "** Test #5: Adding second word to BST dictionary...";
             dictBST.addWord("second");
             feedback += "Dictionary size is " + dictBST.size() + ".\n";
-            
+
             feedback += "** Test #6: Retrieving the word from the first test...";
             feedback += "isWord returned " + dictBST.isWord("teSt") + ".\n";
-
 
             feedback += "** Test #7: Adding lots of words and retrieving some...";
             dictBST.addWord("seconds");
@@ -48,7 +47,7 @@ public class DictionaryGrader {
             dictBST.addWord("secondhand");
             dictBST.addWord("selma");
             feedback += "isWord(seconded) returned " + dictBST.isWord("seconded") + "; isWord(selma) returned " + dictBST.isWord("selma") + ".\n";
-    
+
             feedback += "** Test #8: Testing non-word in DictLL...";
             feedback += "isWord(soup) returned " + dictLL.isWord("soup") + ".\n";
 

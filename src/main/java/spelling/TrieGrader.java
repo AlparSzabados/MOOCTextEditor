@@ -1,17 +1,14 @@
 package spelling;
 
 import java.io.PrintWriter;
-import java.lang.StringBuilder;
 import java.util.List;
 
 public class TrieGrader {
     StringBuilder feedback;
 
-
     public TrieGrader() {
         feedback = new StringBuilder();
     }
-
 
     public static void main(String[] args) {
         TrieGrader g = new TrieGrader();
@@ -41,18 +38,16 @@ public class TrieGrader {
 
         StringBuilder feedback = g.getFeedback();
 
-
         out.println(feedback.toString());
         out.close();
     }
 
-
     private void testAddWords(AutoCompleteDictionaryTrie ac) {
-        feedback.append( "//TESTING ADDING WORDS (addWord, insert)//");
+        feedback.append("//TESTING ADDING WORDS (addWord, insert)//");
         appendTestString(1, "Adding first word to dictionary...");
         feedback.append("addWord returned " + ac.addWord("dog") + ".");
 
-        appendTestString(2,"Adding two more words and testing size...");
+        appendTestString(2, "Adding two more words and testing size...");
         ac.addWord("downhill");
         ac.addWord("downhiller");
 
@@ -82,22 +77,21 @@ public class TrieGrader {
         ac.addWord("testbase");
         ac.addWord("testcases");
 
-
         feedback.append("Dict size is " + ac.size() + ".");
 
         // get current size before trying to add duplicate word
 
-        appendTestString(4,"Adding duplicate word...");
+        appendTestString(4, "Adding duplicate word...");
         feedback.append("Adding duplicate word returned " + ac.addWord("dog") + ".");
 
         appendTestString(5, "Checking size after try to add duplicate word...");
-        feedback.append("Dict size is " + ac.size()+ ".");
+        feedback.append("Dict size is " + ac.size() + ".");
     }
 
     private void testWordsInOut(AutoCompleteDictionaryTrie ac) {
 
         feedback.append("\n\n\n//TESTING FOR WORDS IN/OUT OF DICTIONARY (isWord)//");
-        appendTestString(6,"Checking empty string...");
+        appendTestString(6, "Checking empty string...");
         // test empty string
         feedback.append("Empty string in dictionary: " + ac.isWord("") + ".");
 
@@ -115,11 +109,8 @@ public class TrieGrader {
         appendTestString(10, "Testing for more words in dictionary...");
         feedback.append("'test' in dictionary: " + ac.isWord("test") + ". 'testcases' in dictionary: " + ac.isWord("testcases") + ". 'testone' in dictionary: " + ac.isWord("testone") + ".");
 
-
         appendTestString(11, "Testing word with capital letters...");
         feedback.append("'TeSt' in dictionary: " + ac.isWord("TeSt") + ".");
-
-
 
     }
 
@@ -134,7 +125,7 @@ public class TrieGrader {
             feedback.append(s + ", ");
         }
 
-        appendTestString(13,"Testing size of list...");
+        appendTestString(13, "Testing size of list...");
         feedback.append("predictCompletions returned " + auto.size() + " elements.");
 
         auto = ac.predictCompletions("soup", 6);
@@ -164,16 +155,15 @@ public class TrieGrader {
         appendTestString(19, "Testing if list contains correct shorter words...");
         feedback.append("Check above output.");
 
-
         appendTestString(20, "Testing for remaining words...");
         partialList = auto.subList(5, auto.size());
 
         int count = 0;
 
-        count = partialList.contains("testone") ? ++count:count ;
-        count = partialList.contains("testine") ? ++count:count;
-        count = partialList.contains("testell") ? ++count:count;
-        count = partialList.contains("testing") ? ++count:count;
+        count = partialList.contains("testone") ? ++count : count;
+        count = partialList.contains("testine") ? ++count : count;
+        count = partialList.contains("testell") ? ++count : count;
+        count = partialList.contains("testing") ? ++count : count;
 
         feedback.append("Out of 'testone', 'testine', 'testell', and 'testing', " + count + " words were found.");
 
@@ -186,7 +176,6 @@ public class TrieGrader {
     private StringBuilder getFeedback() {
         return this.feedback;
     }
-
 
 }
 

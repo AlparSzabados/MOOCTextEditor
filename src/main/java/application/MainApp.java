@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class MainApp extends Application {
-    private Stage      primaryStage;
+    private Stage primaryStage;
     private BorderPane rootLayout;
 
     // called at start of application
