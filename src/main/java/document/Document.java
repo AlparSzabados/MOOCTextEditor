@@ -1,7 +1,8 @@
 package document;
 
-/** 
+/**
  * A class that represents a text document
+ *
  * @author UC San Diego Intermediate Programming MOOC team
  */
 
@@ -12,24 +13,27 @@ import java.util.regex.Pattern;
 
 public abstract class Document {
 
-	private String text;
-	
-	/** Create a new document from the given text.
-	 * Because this class is abstract, this is used only from subclasses.
-	 * @param text The text of the document.
-	 */
-	protected Document(String text)
-	{
-		this.text = text;
-	}
-	
-	/** Returns the tokens that match the regex pattern from the document 
-	 * text string.
-	 * @param pattern A regular expression string specifying the 
-	 *   token pattern desired
-	 * @return A List of tokens from the document text that match the regex 
-	 *   pattern
-	 */
+    private String text;
+
+    /**
+     * Create a new document from the given text.
+     * Because this class is abstract, this is used only from subclasses.
+     *
+     * @param text The text of the document.
+     */
+    protected Document(String text) {
+        this.text = text;
+    }
+
+    /**
+     * Returns the tokens that match the regex pattern from the document
+     * text string.
+     *
+     * @param pattern A regular expression string specifying the
+     *                token pattern desired
+     * @return A List of tokens from the document text that match the regex
+     * pattern
+     */
     protected List<String> getTokens(String pattern) {
         ArrayList<String> tokens = new ArrayList<>();
         Pattern tokSplitter = Pattern.compile(pattern);
@@ -51,21 +55,23 @@ public abstract class Document {
      * is not considered a syllable unless the word has no other syllables.
      * You should consider y a vowel.
      */
-    protected int countSyllables(String word) {
-        boolean previousCharVowel = false;
-        int syllableCount = 0;
-
-        for (int i = 0; i < word.length(); i++) {
-            char c = word.charAt(i);
-            if (isVowel(c) && !previousCharVowel) {
-                if ((i + 1 < word.length()) || (c != 'e') || (syllableCount == 0)) {
-                    syllableCount++;
-                }
-            }
-            previousCharVowel = isVowel(c);
+    protected int countSyllables(String word, int syllableCount, boolean previousCharVowel) {
+        if (word.length() == 0) {
+            return syllableCount;
+        } else if (isSyllable(word, syllableCount, previousCharVowel)) {
+            syllableCount += 1;
+            return countSyllables(word.substring(1, word.length()), syllableCount, true);
         }
+        return countSyllables(word.substring(1, word.length()), syllableCount, isVowel(word.charAt(0)));
+    }
 
-        return syllableCount;
+    private boolean isSyllable(String word, int syllableCount, boolean previousCharVowel) {
+        if (isVowel(word.charAt(0)) && !previousCharVowel) {
+            if ((word.length() > 1) || (word.charAt(0) != 'e') || (syllableCount == 0)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private boolean isVowel(char c) {
