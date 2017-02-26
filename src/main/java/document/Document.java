@@ -59,10 +59,10 @@ public abstract class Document {
         if (word.length() == 0) {
             return syllableCount;
         } else if (isSyllable(word, syllableCount, previousCharVowel)) {
-            syllableCount += 1;
-            return countSyllables(word.substring(1, word.length()), syllableCount, true);
+            return countSyllables(word.substring(1), syllableCount + 1, true);
+        } else {
+            return countSyllables(word.substring(1), syllableCount, isVowel(word.charAt(0)));
         }
-        return countSyllables(word.substring(1, word.length()), syllableCount, isVowel(word.charAt(0)));
     }
 
     private boolean isSyllable(String word, int syllableCount, boolean previousCharVowel) {

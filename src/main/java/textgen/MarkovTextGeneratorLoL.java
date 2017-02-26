@@ -56,8 +56,8 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
     public String generateText(int numWords) {
         if (wordList.size() > 0) {
             final List<String> result = new ArrayList<>();
-            final int index = rnGenerator.nextInt(wordList.size());
-            ListNode node = wordList.get(index);
+            ListNode node = wordList.get(0);
+            result.add(node.getWord());
             while (numWords > 0) {
                 final String randomNextWord = node.getRandomNextWord(rnGenerator);
                 result.add(randomNextWord);

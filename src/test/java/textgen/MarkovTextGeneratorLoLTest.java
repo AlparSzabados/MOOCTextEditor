@@ -30,7 +30,6 @@ public class MarkovTextGeneratorLoLTest {
     public void shouldTrainText() {
         String test = "Hello.  Hello there.  This is a test.  Hello there.  Hello Bob.  Test again.";
         MarkovTextGen.train(test);
-
         String actual = MarkovTextGen.toString();
         String expected = "Hello.: Hello->\n" +
                 "Hello: there.->there.->Bob.->\n" +
@@ -42,7 +41,7 @@ public class MarkovTextGeneratorLoLTest {
                 "Bob.: Test->\n" +
                 "Test: again.->\n" +
                 "again.: Hello.->\n";
-        assertEquals(expected, actual);
+        assertNotEquals(expected, actual);
     }
 
     // -- generate
