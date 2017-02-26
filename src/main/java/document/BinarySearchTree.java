@@ -2,6 +2,7 @@ package document;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -40,9 +41,7 @@ public class BinarySearchTree<E extends Comparable<? super E>> {
     }
 
     public boolean add(E value) {
-        if (value == null) {
-            throw new NullPointerException();
-        }
+        Objects.requireNonNull(value);
         if (root == null) {
             root = new Node<>(value);
             return true;
@@ -51,20 +50,16 @@ public class BinarySearchTree<E extends Comparable<? super E>> {
     }
 
     private boolean insertNode(Node<E> curr, E value) {
-        final boolean smaller = value.compareTo(curr.value) < 0 ;
-        final boolean greater = value.compareTo(curr.value) > 0;
-        if (smaller && curr.left != null || greater && curr.right != null) {
-            if (smaller) {
-                return insertNode(curr.left, value);
-            } else {
-                return insertNode(curr.right, value);
-            }
+        final boolean smaller = value.compareTo(curr.value) < 0;
+        if (value.compareTo(curr.value) == 0) return false;
+        else if (smaller && curr.left != null) {
+            return insertNode(curr.left, value);
+        } else if (!smaller && curr.right != null) {
+            return insertNode(curr.right, value);
         }
-        if (smaller) {
-            curr.left = new Node<>(value);
-        } else if (greater) {
-            curr.right = new Node<>(value);
-        } else return false;
+
+        if (smaller) curr.left = new Node<>(value);
+        else curr.right = new Node<>(value);
         return true;
     }
 
@@ -84,7 +79,7 @@ public class BinarySearchTree<E extends Comparable<? super E>> {
         StringBuilder result = new StringBuilder();
         if (node != null) {
             result.append(print(node.left));
-            if (node.value != null) result.append(" ").append(node.value.toString());
+            if (node.value != null) result.append(" ").append(node.value);
             result.append(print(node.right));
         }
         return result.toString();
@@ -96,23 +91,20 @@ class Node<E> {
     Node<E> left, right;
 
     Node() {
-        this.value = null;
-        this.left = null;
-        this.right = null;
     }
 
     Node(E value) {
+        Objects.requireNonNull(value);
         this.value = value;
     }
 
     Node(E value, Node<E> left) {
-        this.value = value;
+        this(value);
         this.left = left;
     }
 
     Node(E value, Node<E> left, Node<E> right) {
-        this.value = value;
-        this.left = left;
+        this(value, left);
         this.right = right;
     }
 }
