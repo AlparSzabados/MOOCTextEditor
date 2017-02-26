@@ -3,8 +3,6 @@ package document;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class BinarySearchTree<E extends Comparable<? super E>> {
     private Node<E> root;
@@ -65,24 +63,17 @@ public class BinarySearchTree<E extends Comparable<? super E>> {
 
     @Override
     public String toString() {
-        Pattern p = Pattern.compile("[\\S]+");
-        Matcher m = p.matcher(print(root));
-
-        final List<String> stringList = new ArrayList<>();
-        while (m.find()){
-            stringList.add(m.group());
-        }
-        return stringList.toString();
+        final List<E> list = toList(root, new ArrayList<>());
+        return list.toString();
     }
 
-    private String print(Node<E> node) {
-        StringBuilder result = new StringBuilder();
+    private List<E> toList(Node<E> node, List<E> results) {
         if (node != null) {
-            result.append(print(node.left));
-            if (node.value != null) result.append(" ").append(node.value);
-            result.append(print(node.right));
+            toList(node.left, results);
+            results.add(node.value);
+            toList(node.right, results);
         }
-        return result.toString();
+        return results;
     }
 }
 
