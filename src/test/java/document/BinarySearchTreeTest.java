@@ -48,6 +48,11 @@ public class BinarySearchTreeTest {
         assertEquals(binaryTree.getRoot(), null);
     }
 
+    @Test(expected = NullPointerException.class)
+    public void shouldThrowWhenNodeValueNull() {
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>(new Node<>(1, new Node<>(null)));
+    }
+
     @Test
     public void shouldConstructFromNodesValue() {
         assertEquals(binarySearchTree.toString(), treeSet.toString());
@@ -55,8 +60,8 @@ public class BinarySearchTreeTest {
 
     @Test
     public void shouldConstructFromValue() {
-        BinarySearchTree<Integer> bST = new BinarySearchTree<>(new Node<>(10, new Node<>(5, new Node<>(3, new Node<>(2, new Node<>(1))), new Node<>(6)), new Node<>(15, new Node<>(12))));
-        assertEquals(binarySearchTree.toString(), bST.toString());
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>(new Node<>(10, new Node<>(5, new Node<>(3, new Node<>(2, new Node<>(1))), new Node<>(6)), new Node<>(15, new Node<>(12))));
+        assertEquals(binarySearchTree.toString(), bst.toString());
     }
 
     @Test
