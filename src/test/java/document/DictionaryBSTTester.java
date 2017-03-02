@@ -5,6 +5,8 @@ import org.junit.Test;
 import spelling.DictionaryBST;
 import spelling.DictionaryLoader;
 
+import java.io.File;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -12,7 +14,8 @@ import static org.junit.Assert.assertEquals;
  */
 public class DictionaryBSTTester {
 
-    private String dictFile = "data/words.small.txt";
+    File dictFile = new File("src/main/resources/words.small.txt");
+//    private String dictFile = "src/main/resources/words.small.txt";
 
     DictionaryBST emptyDict;
     DictionaryBST smallDict;
@@ -23,6 +26,7 @@ public class DictionaryBSTTester {
      */
     @Before
     public void setUp() throws Exception {
+        System.out.println(dictFile.exists());
         emptyDict = new DictionaryBST();
         smallDict = new DictionaryBST();
         largeDict = new DictionaryBST();
@@ -33,7 +37,7 @@ public class DictionaryBSTTester {
         smallDict.addWord("a");
         smallDict.addWord("subsequent");
 
-        DictionaryLoader.loadDictionary(largeDict, dictFile);
+        DictionaryLoader.loadDictionary(largeDict, dictFile.toString());
     }
 
     /**
