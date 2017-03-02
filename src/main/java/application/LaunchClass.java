@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class LaunchClass {
 
-    public String dictFile = "data/dict.txt";
+    public String dictFile = "/dict.txt";
 
     public LaunchClass() {
         super();

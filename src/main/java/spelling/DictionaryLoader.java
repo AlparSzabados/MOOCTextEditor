@@ -1,5 +1,7 @@
 package spelling;
 
+import application.MainApp;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -14,10 +16,9 @@ public class DictionaryLoader {
      */
     public static void loadDictionary(Dictionary d, String filename) {
         // Dictionary files have 1 word per line
-        BufferedReader reader = null;
         try {
             String nextWord;
-            reader = new BufferedReader(new FileReader(filename));
+            BufferedReader reader = new BufferedReader(new FileReader(MainApp.class.getResource(filename).getFile()));
             while ((nextWord = reader.readLine()) != null) {
                 d.addWord(nextWord);
             }
@@ -37,17 +38,16 @@ public class DictionaryLoader {
      */
     public static void loadDictionary(Dictionary d, String filename, int nWords) {
         // Dictionary files have 1 word per line
-        BufferedReader reader = null;
         try {
             String nextWord;
-            reader = new BufferedReader(new FileReader(filename));
+            BufferedReader reader = new BufferedReader(new FileReader(MainApp.class.getResource(filename).getFile()));
             int numLoaded = 0;
             while ((nextWord = reader.readLine()) != null && numLoaded < nWords) {
                 d.addWord(nextWord);
                 numLoaded++;
             }
             if (numLoaded < nWords) {
-                System.out.print("loadDicitonary Warning: End of dictionary file reached.  ");
+                System.out.print("loadDictionary Warning: End of dictionary file reached.  ");
                 System.out.println(nWords + " requested, but only " + numLoaded + " words loaded.");
             }
         } catch (IOException e) {

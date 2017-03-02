@@ -15,7 +15,7 @@ public class DictionaryBenchmarking {
         int trials = 500;
 
         // The text to test on
-        String dictFile = "data/dict.txt";
+        String dictFile = "/dict.txt";
 
         // The amount of words to increment each step
         // You can play around with this
@@ -31,7 +31,6 @@ public class DictionaryBenchmarking {
 
         String notInDictionary = "notaword";
 
-        // TODO: Play around with the numbers above and graph the output to see trends in the data
         for (int numToCheck = start; numToCheck < numSteps * increment + start;
              numToCheck += increment) {
             // Time the creation of finding a word that is not in the dictionary.
@@ -56,9 +55,6 @@ public class DictionaryBenchmarking {
             long timeBST = (endTime - startTime);
 
             System.out.println(numToCheck + "\t" + timeLL + "\t" + timeBST);
-
         }
-
     }
-
 }

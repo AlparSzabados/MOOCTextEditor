@@ -16,10 +16,10 @@ public class DocumentBenchmarking {
 
         // Run each test more than once to get bigger numbers and less noise.
         // You can try playing around with this number.
-        int trials = 100;
+        int trials = 500;
 
         // The text to test on
-        String textfile = "src/main/resources/warAndPeace.txt";
+        String textfile = "/warAndPeace.txt";
 
         // The amount of characters to increment each step
         // You can play around with this
@@ -67,7 +67,7 @@ public class DocumentBenchmarking {
 
         StringBuffer s = new StringBuffer();
         try {
-            FileInputStream inputFile = new FileInputStream(filename);
+            FileInputStream inputFile = new FileInputStream(Document.class.getResource(filename).getFile());
             InputStreamReader inputStream = new InputStreamReader(inputFile);
             BufferedReader bis = new BufferedReader(inputStream);
             int val;
