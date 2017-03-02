@@ -3,4 +3,5 @@
 .metadata/
 bin/
 build/
-grader_output/
+classes
+
