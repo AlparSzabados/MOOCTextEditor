@@ -17,7 +17,7 @@ class TrieNode {
      * Create a new TrieNode
      */
     public TrieNode() {
-        children = new HashMap<Character, TrieNode>();
+        children = new HashMap<>();
         text = "";
         isWord = false;
     }
@@ -89,6 +89,5 @@ class TrieNode {
     public Set<Character> getValidNextCharacters() {
         return children.keySet();
     }
-
 }
 

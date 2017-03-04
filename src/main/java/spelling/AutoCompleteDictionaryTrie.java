@@ -1,6 +1,6 @@
 package spelling;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * An trie data structure that implements the Dictionary and the AutoComplete ADT
@@ -32,7 +32,13 @@ public class AutoCompleteDictionaryTrie implements Dictionary, AutoComplete {
      * in the dictionary.
      */
     public boolean addWord(String word) {
-        //TODO: Implement this method.
+        TrieNode node = getTrieNode(word);
+        if (!node.endsWord()) {
+            node.setEndsWord(true);
+            size++;
+            return true;
+        }
+
         return false;
     }
 
@@ -41,8 +47,7 @@ public class AutoCompleteDictionaryTrie implements Dictionary, AutoComplete {
      * as the number of TrieNodes in the trie.
      */
     public int size() {
-        //TODO: Implement this method
-        return 0;
+        return size;
     }
 
     /**
@@ -50,9 +55,15 @@ public class AutoCompleteDictionaryTrie implements Dictionary, AutoComplete {
      * described in the videos for this week.
      */
     @Override
-    public boolean isWord(String s) {
-        // TODO: Implement this method
-        return false;
+    public boolean isWord(String word) {
+        String s = word.toLowerCase();
+        TrieNode node = root;
+        for (char c : s.toCharArray()) {
+            if (node.getValidNextCharacters().contains(c)) {
+                node = node.getChild(c);
+            }
+        }
+        return Objects.equals(node.getText(), s) && node.endsWord();
     }
 
     /**
@@ -78,22 +89,41 @@ public class AutoCompleteDictionaryTrie implements Dictionary, AutoComplete {
      */
     @Override
     public List<String> predictCompletions(String prefix, int numCompletions) {
-        // TODO: Implement this method
-        // This method should implement the following algorithm:
-        // 1. Find the stem in the trie.  If the stem does not appear in the trie, return an
-        //    empty list
-        // 2. Once the stem is found, perform a breadth first search to generate completions
-        //    using the following algorithm:
-        //    Create a queue (LinkedList) and add the node that completes the stem to the back
-        //       of the list.
-        //    Create a list of completions to return (initially empty)
-        //    While the queue is not empty and you don't have enough completions:
-        //       remove the first Node from the queue
-        //       If it is a word, add it to the completions list
-        //       Add all of its child nodes to the back of the queue
-        // Return the list of completions
+        Queue<TrieNode> queue = new LinkedList<>();
+        List<String> result = new ArrayList<>();
+        TrieNode node = getTrieNode(prefix);
+        while (numCompletions > 0) {
+            if (!queue.isEmpty())
+                node = queue.poll();
+            if (node.endsWord()) {
+                result.add(node.getText());
+                numCompletions--;
+            }
+            queue.addAll(validNodesToQueue(node.getValidNextCharacters(), node));
+            if (queue.isEmpty()) return result;
+        }
+        return result;
+    }
 
-        return null;
+    private Queue<TrieNode> validNodesToQueue(Set<Character> keys, TrieNode node) {
+        Queue<TrieNode> result = new LinkedList<>();
+        for (Character key : keys) {
+            result.add(node.getChild(key));
+        }
+        return result;
+    }
+
+    private TrieNode getTrieNode(String word) {
+        final String s = word.toLowerCase();
+        TrieNode node = root;
+        for (char c : s.toCharArray()) {
+            if (node.getValidNextCharacters().contains(c)) {
+                node = node.getChild(c);
+            } else {
+                node = node.insert(c);
+            }
+        }
+        return node;
     }
 
     // For debugging
@@ -110,11 +140,19 @@ public class AutoCompleteDictionaryTrie implements Dictionary, AutoComplete {
 
         System.out.println(curr.getText());
 
-        TrieNode next = null;
+        TrieNode next;
         for (Character c : curr.getValidNextCharacters()) {
             next = curr.getChild(c);
             printNode(next);
         }
+    }
+
+    public static void main(String[] args) {
+        AutoCompleteDictionaryTrie trie = new AutoCompleteDictionaryTrie();
+        trie.addWord("abc");
+        trie.addWord("bcd");
+
+        trie.printTree();
     }
 
 }

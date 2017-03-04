@@ -15,7 +15,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class AutoCompleteDictionaryTrieTester {
 
-    private String dictFile = "data/words.small.txt";
+    private String dictFile = "/words.small.txt";
 
     AutoCompleteDictionaryTrie emptyDict;
     AutoCompleteDictionaryTrie smallDict;
@@ -94,6 +94,8 @@ public class AutoCompleteDictionaryTrieTester {
         smallDict.addWord("hellow");
         largeDict.addWord("hellow");
 
+        emptyDict.printTree();
+
         assertEquals("Asserting hellow is in empty dict", true, emptyDict.isWord("hellow"));
         assertEquals("Asserting hellow is in small dict", true, smallDict.isWord("hellow"));
         assertEquals("Asserting hellow is in large dict", true, largeDict.isWord("hellow"));
@@ -125,6 +127,7 @@ public class AutoCompleteDictionaryTrieTester {
     @Test
     public void testPredictCompletions() {
         List<String> completions;
+        boolean allIn;
         completions = smallDict.predictCompletions("", 0);
         assertEquals(0, completions.size());
 
@@ -138,7 +141,7 @@ public class AutoCompleteDictionaryTrieTester {
         assertTrue(twoOfThree);
 
         completions = smallDict.predictCompletions("he", 2);
-        boolean allIn = completions.contains("he") && (completions.contains("hem") || completions.contains("hey"));
+        allIn = completions.contains("he") && (completions.contains("hem") || completions.contains("hey"));
         assertEquals(2, completions.size());
         assertTrue(allIn);
 
