@@ -146,13 +146,4 @@ public class AutoCompleteDictionaryTrie implements Dictionary, AutoComplete {
             printNode(next);
         }
     }
-
-    public static void main(String[] args) {
-        AutoCompleteDictionaryTrie trie = new AutoCompleteDictionaryTrie();
-        trie.addWord("abc");
-        trie.addWord("bcd");
-
-        trie.printTree();
-    }
-
 }
