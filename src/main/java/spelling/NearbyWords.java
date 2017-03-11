@@ -1,9 +1,9 @@
 package spelling;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.function.Consumer;
-
-import static java.lang.String.format;
 
 /**
  * @author UC San Diego Intermediate MOOC team
@@ -14,23 +14,6 @@ public class NearbyWords implements SpellingSuggest {
 
     public NearbyWords(Dictionary dict) {
         this.dict = dict;
-    }
-
-    public static void main(String[] args) {
-        //basic testing code to get started
-        String word = "i";
-        // Pass NearbyWords any Dictionary implementation you prefer
-        Dictionary d = new DictionaryHashSet();
-        DictionaryLoader.loadDictionary(d, "/dict.txt");
-        NearbyWords w = new NearbyWords(d);
-        List<String> l = w.distanceOne(word, true);
-        System.out.println("One away word Strings for for \"" + word + "\" are:");
-        System.out.println(l + "\n");
-
-        word = "tailo";
-        List<String> suggest = w.suggestions(word, 10);
-        System.out.println(format("Spelling Suggestions for \"%s\" are:", word));
-        System.out.println(suggest);
     }
 
     /**
