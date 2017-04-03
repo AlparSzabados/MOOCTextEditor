@@ -248,7 +248,7 @@ public class AutoSpellingTextArea extends StyledTextArea<Boolean> {
             word = matcher.group();
 
             // HINT: may need to change if handling caps
-            boolean styleClass = dic.isWord(word);
+            boolean styleClass = dic.isWordInDictionary(word);
             spansBuilder.add(true, matcher.start() - lastEnd);
             spansBuilder.add(styleClass, matcher.end() - matcher.start());
             lastEnd = matcher.end();
