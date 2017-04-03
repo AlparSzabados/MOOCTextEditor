@@ -4,7 +4,7 @@ import java.util.Objects;
 import java.util.TreeSet;
 
 /**
- * @author UC San Diego Intermediate MOOC team
+ * @author Szabados Alpár
  */
 public class DictionaryBST implements Dictionary {
     private TreeSet<String> dict;

@@ -7,6 +7,9 @@ import java.util.TreeSet;
 
 import static org.junit.Assert.*;
 
+/**
+ * @author Szabados Alpár
+ */
 public class BinarySearchTreeTest {
     private BinarySearchTree<Integer> binarySearchTree;
     private TreeSet<Integer> treeSet;

@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.function.Consumer;
 
 /**
- * @author UC San Diego Intermediate MOOC team
+ * @author Szabados Alpár
  */
 public class NearbyWords implements SpellingSuggest {
 

@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 /** 
  * An implementation of the MTG interface that uses a list of lists.
- * @author UC San Diego Intermediate Programming MOOC team 
+ * @author Szabados Alpár
  */
 public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 

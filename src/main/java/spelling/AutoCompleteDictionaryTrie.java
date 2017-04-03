@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * An trie data structure that implements the Dictionary and the AutoComplete ADT
  *
- * @author You
+ * @author Szabados Alpár
  */
 public class AutoCompleteDictionaryTrie implements Dictionary, AutoComplete {
 
@@ -17,10 +17,6 @@ public class AutoCompleteDictionaryTrie implements Dictionary, AutoComplete {
     }
 
     /**
-     * Insert a word into the trie.
-     * For the basic part of the assignment (part 2), you should convert the
-     * string to all lower case before you insert it.
-     * <p>
      * This method adds a word by creating and linking the necessary trie nodes
      * into the trie, as described outlined in the videos for this week. It
      * should appropriately use existing nodes in the trie, only creating new
@@ -55,7 +51,7 @@ public class AutoCompleteDictionaryTrie implements Dictionary, AutoComplete {
      * described in the videos for this week.
      */
     @Override
-    public boolean isWord(String word) {
+    public boolean isWordInDictionary(String word) {
         String s = word.toLowerCase();
         TrieNode node = root;
         for (char c : s.toCharArray()) {

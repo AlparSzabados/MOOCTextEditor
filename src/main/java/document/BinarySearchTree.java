@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * An BinarySearchTree data structure implemented from scratch as part of the assignment
+ *
+ * @author Szabados Alpár
+ */
 public class BinarySearchTree<E extends Comparable<? super E>> {
     private Node<E> root;
 

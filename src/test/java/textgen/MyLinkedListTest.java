@@ -8,6 +8,9 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * @author Szabados Alpár
+ */
 public class MyLinkedListTest {
 
     // -- construct
