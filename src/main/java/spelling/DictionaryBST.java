@@ -23,10 +23,8 @@ public class DictionaryBST implements Dictionary {
      */
     public boolean addWord(String word) {
         Objects.requireNonNull(word);
-        final String toLowerCase = word.toLowerCase();
-        if (isWordInDictionary(toLowerCase)) return false;
-        dict.add(toLowerCase);
-        return true;
+        dict.add(word.toLowerCase());
+        return isWordInDictionary(word);
     }
 
     /**

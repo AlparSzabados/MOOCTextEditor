@@ -24,10 +24,8 @@ public class DictionaryLL implements Dictionary {
      */
     public boolean addWord(String word) {
         Objects.requireNonNull(word);
-        final String toLowerCase = word.toLowerCase();
-        if (isWordInDictionary(toLowerCase)) return false;
-        dict.add(toLowerCase);
-        return true;
+        dict.add(word.toLowerCase());
+        return isWordInDictionary(word);
     }
 
     /**
@@ -42,7 +40,6 @@ public class DictionaryLL implements Dictionary {
      */
     public boolean isWordInDictionary(String word) {
         Objects.requireNonNull(word);
-        final String s = word.toLowerCase();
-        return dict.contains(s);
+        return dict.contains(word.toLowerCase());
     }
 }
