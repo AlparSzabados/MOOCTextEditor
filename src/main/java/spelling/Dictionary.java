@@ -19,7 +19,7 @@ public interface Dictionary {
     /**
      * Is this a word according to this dictionary?
      */
-    public abstract boolean isWord(String s);
+    public abstract boolean isWordInDictionary(String s);
 
     /**
      * Return the number of words in the dictionary

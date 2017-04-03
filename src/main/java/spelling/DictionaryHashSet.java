@@ -40,7 +40,7 @@ public class DictionaryHashSet implements Dictionary {
      * Is this a word according to this dictionary?
      */
     @Override
-    public boolean isWord(String s) {
+    public boolean isWordInDictionary(String s) {
         return words.contains(s.toLowerCase());
     }
 

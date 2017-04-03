@@ -24,7 +24,7 @@ public class DictionaryBST implements Dictionary {
     public boolean addWord(String word) {
         Objects.requireNonNull(word);
         final String toLowerCase = word.toLowerCase();
-        if (isWord(toLowerCase)) return false;
+        if (isWordInDictionary(toLowerCase)) return false;
         dict.add(toLowerCase);
         return true;
     }
@@ -39,9 +39,8 @@ public class DictionaryBST implements Dictionary {
     /**
      * Is this a word according to this dictionary?
      */
-    public boolean isWord(String word) {
+    public boolean isWordInDictionary(String word) {
         Objects.requireNonNull(word);
-        final String s = word.toLowerCase();
-        return dict.contains(s);
+        return dict.contains(word.toLowerCase());
     }
 }

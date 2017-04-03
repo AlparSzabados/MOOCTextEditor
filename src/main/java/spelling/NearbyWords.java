@@ -60,7 +60,7 @@ public class NearbyWords implements SpellingSuggest {
     }
 
     private boolean isWord(String s, List<String> currentList, boolean wordsOnly, String string) {
-        return !currentList.contains(string) && (!wordsOnly || dict.isWord(string)) && !Objects.equals(s, string);
+        return !currentList.contains(string) && (!wordsOnly || dict.isWordInDictionary(string)) && !Objects.equals(s, string);
     }
 
     private void addIfValid(String s, List<String> currentList, boolean wordsOnly, String string) {

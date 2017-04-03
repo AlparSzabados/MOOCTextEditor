@@ -42,14 +42,14 @@ public class DictionaryBenchmarking {
 
             long startTime = System.nanoTime();
             for (int i = 0; i < trials; i++) {
-                llDict.isWord(notInDictionary);
+                llDict.isWordInDictionary(notInDictionary);
             }
             long endTime = System.nanoTime();
             long timeLL = (endTime - startTime);
 
             startTime = System.nanoTime();
             for (int i = 0; i < trials; i++) {
-                bstDict.isWord(notInDictionary);
+                bstDict.isWordInDictionary(notInDictionary);
             }
             endTime = System.nanoTime();
             long timeBST = (endTime - startTime);
